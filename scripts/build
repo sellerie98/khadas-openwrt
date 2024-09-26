@@ -237,7 +237,7 @@ case $REL in
 X86_rootfs=openwrt-$REL-x86-64-rootfs.tar.gz
 ;;
 *)
-X86_rootfs=openwrt-$REL-x86-64-generic-rootfs.tar.gz
+X86_rootfs=openwrt-$REL-x86-64-rootfs.tar.gz
 esac
 
 DL https://downloads.openwrt.org/releases/$REL/targets/x86/64/$X86_rootfs || FAIL
@@ -249,8 +249,8 @@ TO="$PR/../bin/$HOST_ARCH"
 CMD mkdir -p $TO
 
 case $REL in
-21*)
-CMD tar -xf $R -C "$TO" ./bin/opkg  ./lib/libc.so  ./lib/libgcc_s.so.1  ./lib/libubox.so.20210516
+23*)
+CMD tar -xf $R -C "$TO" ./bin/opkg  ./lib/libc.so  ./lib/libgcc_s.so.1  ./lib/libubox.so.20230523
 ;;
 *)
 CMD tar -xf $R -C "$TO" ./bin/opkg  ./lib/libc.so  ./lib/libgcc_s.so.1  ./lib/libubox.so
@@ -262,7 +262,7 @@ esac
 # cd ../bin
 # DL http://downloads.openwrt.org/releases/18.06.4/packages/x86_64/base/opkg_2019-06-14-dcbc142e-1_x86_64.ipk || FAIL
 
-DL https://downloads.openwrt.org/releases/$REL/targets/$TARGET/64/openwrt-$REL-$TARGET-64-default-rootfs.tar.gz || FAIL
+DL https://downloads.openwrt.org/releases/${REL}/targets/${TARGET}/${TARGET_ARCH}/openwrt-${REL}-${TARGET}-${TARGET_ARCH}-rootfs.tar.gz || FAIL
 
 #UNPACK $R
 #OWBASE=$T
